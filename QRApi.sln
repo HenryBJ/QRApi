@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRApi", "QRApi.csproj", "{9162855C-B33A-479A-A574-25DD3703E1E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{F17874F8-26A9-45FE-904B-CD82FAE6DC1B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\Storage\QRApi\AuthApi\k8s.yml = ..\..\..\..\..\Storage\QRApi\AuthApi\k8s.yml
+		versions.json = versions.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{06BD969B-C24B-421B-89B3-E12460B98441}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{F496A3C1-E65A-46B3-8818-BB318B65B697}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\Storage\QRApi\AuthApi\pipeline.yml = ..\..\..\..\..\Storage\QRApi\AuthApi\pipeline.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9162855C-B33A-479A-A574-25DD3703E1E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9162855C-B33A-479A-A574-25DD3703E1E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9162855C-B33A-479A-A574-25DD3703E1E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9162855C-B33A-479A-A574-25DD3703E1E4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F496A3C1-E65A-46B3-8818-BB318B65B697} = {06BD969B-C24B-421B-89B3-E12460B98441}
+	EndGlobalSection
+EndGlobal
