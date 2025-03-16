@@ -39,14 +39,11 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-if (app.Environment.IsDevelopment())
+app.MapOpenApi();
+app.MapScalarApiReference(o =>
 {
-    app.MapOpenApi();
-    app.MapScalarApiReference(o =>
-    {
-        o.Title = "QR Code API";
-    });
-}
+    o.Title = "QR Code API";
+});
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

@@ -49,6 +49,10 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: "20m"
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - qr.joseenrique.dev
+    secretName: joseenrique-dev-tls
   rules:
     - host: qr.joseenrique.dev
       http:
