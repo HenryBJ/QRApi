@@ -75,8 +75,8 @@ public class GenerateController : ControllerBase
             .GetQRCode(
             request.Url,
             request.Size,
-            request.DarkColorHex,
-            request.LightColorHex,
+            Validate(request.DarkColorHex,"#000000"),
+            Validate(request.LightColorHex,"#ffffff"),
             ToECCLevel(request.ECCLevel));
 
         Response.Headers.Add("Content-Disposition", "inline; filename=qrcode.jpeg");
@@ -119,8 +119,8 @@ public class GenerateController : ControllerBase
             var logo = await DownloadPngAsImage(request.LogoUrl);
             svg = SvgQRCodeHelper.GetQRCode(request.Url,
             request.Size,
-            request.DarkColorHex,
-            request.LightColorHex,
+            Validate(request.DarkColorHex, "#000000"),
+            Validate(request.LightColorHex, "#ffffff"),
             ToECCLevel(request.ECCLevel),
             drawQuietZones: request.Border,
             logo: new SvgQRCode.SvgLogo(iconRasterized: logo));
@@ -133,8 +133,8 @@ public class GenerateController : ControllerBase
 
             svg = SvgQRCodeHelper.GetQRCode(request.Url,
             request.Size,
-            request.DarkColorHex,
-            request.LightColorHex,
+            Validate(request.DarkColorHex, "#000000"),
+            Validate(request.LightColorHex, "#ffffff"),
             ToECCLevel(request.ECCLevel),
             drawQuietZones: request.Border,
             logo: new SvgQRCode.SvgLogo(iconVectorized: svgString));
@@ -143,8 +143,8 @@ public class GenerateController : ControllerBase
         {
             svg = SvgQRCodeHelper.GetQRCode(request.Url,
             request.Size,
-            request.DarkColorHex,
-            request.LightColorHex,
+            Validate(request.DarkColorHex, "#000000"),
+            Validate(request.LightColorHex, "#ffffff"),
             ToECCLevel(request.ECCLevel),
             drawQuietZones: request.Border);
         }
@@ -176,6 +176,14 @@ public class GenerateController : ControllerBase
         byte b = Convert.ToByte(hex.Substring(4, 2), 16);
 
         return new byte[] { r, g, b };
+    }
+
+    private string Validate(string hex, string defaultValue)
+    {
+        if (string.IsNullOrWhiteSpace(hex) || !System.Text.RegularExpressions.Regex.IsMatch(hex, "^#?([A-Fa-f0-9]{6})$"))
+            return defaultValue;
+
+        return hex;
     }
 
     private async Task<byte[]> DownloadPngAsImage(string imageUrl)
