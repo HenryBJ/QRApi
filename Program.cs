@@ -46,6 +46,9 @@ app.MapScalarApiReference(o =>
 });
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<RequestLoggingMiddleware>();
+
 app.UseAuthentication();
 app.UseMiddleware<RapidAPIAuthenticationMiddleware>();
 app.UseAuthorization();
