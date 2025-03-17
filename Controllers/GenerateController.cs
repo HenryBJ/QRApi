@@ -39,8 +39,8 @@ public class GenerateController : ControllerBase
         var bytes = PngByteQRCodeHelper.GetQRCode(
             request.Url, 
             request.Size, 
-            HexToRgb(request.DarkColorHex), 
-            HexToRgb(request.LightColorHex), 
+            HexToRgb(request.DarkColorHex, "#000000"), 
+            HexToRgb(request.LightColorHex, "#ffffff"), 
             ToECCLevel(request.ECCLevel),
             drawQuietZones:request.Border);
 
@@ -163,10 +163,10 @@ public class GenerateController : ControllerBase
         };
     }
 
-    private byte[] HexToRgb(string hex)
+    private byte[] HexToRgb(string hex, string defaultValue)
     {
         if (string.IsNullOrWhiteSpace(hex) || !System.Text.RegularExpressions.Regex.IsMatch(hex, "^#?([A-Fa-f0-9]{6})$"))
-            throw new ArgumentException("Invalid HEX color format. It should be like #RRGGBB.", nameof(hex));
+            hex=defaultValue;
 
         // Remueve el símbolo '#' si está presente
         hex = hex.TrimStart('#');
